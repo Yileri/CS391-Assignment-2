@@ -7,6 +7,7 @@ let properties = [
 ];
 
 function sort() {
-    alert("Test");
+    let selected = document.getElementById("sort");
+    alert(selected.options[selected.selectedIndex].value);
 }
 
