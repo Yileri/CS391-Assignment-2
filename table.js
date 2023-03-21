@@ -8,6 +8,16 @@ let properties = [
 
 function sort() {
     let selected = document.getElementById("sort");
-    alert(selected.options[selected.selectedIndex].value);
+    if (selected.value == "Home Type") {
+        properties.sort((a, b) => {
+            if (a.homeType < b.homeType) {
+              return -1;
+            } else if (a.homeType > b.homeType) {
+              return 1;
+            } else {
+              return 0;
+            }
+          });
+    }
 }
 
