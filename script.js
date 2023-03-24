@@ -7,7 +7,7 @@ let properties = [
 ];
 
 function generateTable() {
-  const table = document.querySelector("table");
+  const table = document.createElement("table");
 
   const thead = table.createTHead();
   let row = thead.insertRow();
@@ -60,6 +60,13 @@ function generateTable() {
     let spaceText = document.createTextNode(properties[i].livingSpace);
     livingSpaceCell.appendChild(spaceText);
   }
+  const tableDiv = document.getElementById("table1");
+  document.body.insertBefore(table, tableDiv);
+}
+
+function updateTable() {
+  document.getElementById("table");
+  generateTable();
 }
 
 function sort() {
@@ -75,8 +82,6 @@ function sort() {
       }
     });
   }
-  generateTable();
+  updateTable();
 }
-
-window.onload = generateTable;
 
