@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <header>
-        <title>Home For Sale</title>
-        <script type="text/javascript" src="script.js"></script>
-    </header>
+<header>
+    <title>Home For Sale</title>
+    <script type="text/javascript" src="script.js"></script>
+</header>
 
-    <body>
-        <label for="sort">Sort By </label>
-        <select name="sort" id ="sort" onchange="sort()">
-            <option value="Select">Select</option>
-            <option value="Price">Price</option>
-            <option value="Home Type">Home Type</option>
-        </select>
-        <br>
-        <br>
-        <label for="min">Filter By </label>
-        <input type="number" name ="min" id="min" placeholder="Min price" min="0">
-        <label for="max">-</label>
-        <input type="number" name ="max" id="max" placeholder="Max price">
-        <button type="button" name="filter" id="filter" value="filter" onclick="filter()">Filter</button>
-        <br>
-        <br>
-        <table id="propertyTable">
-            <tr>
-                <th>Home Type</th>
-                <th>State</th>
-                <th>Room</th>
-                <th>Price ($)</th>
-                <th>Living Space (m²)</th>
-            </tr>
-            <tbody>
+<body>
+    <label for="sort">Sort By </label>
+    <select name="sort" id="sort" onchange="sort()">
+        <option value="Select">Select</option>
+        <option value="Price">Price</option>
+        <option value="Home Type">Home Type</option>
+    </select>
+    <br>
+    <br>
+    <label for="min">Filter By </label>
+    <input type="number" name="min" id="min" placeholder="Min price" min="0">
+    <label for="max">-</label>
+    <input type="number" name="max" id="max" placeholder="Max price">
+    <button type="button" name="filter" id="filter" value="filter" onclick="filter()">Filter</button>
+    <br>
+    <br>
+    <table id="propertyTable">
+        <tr>
+            <th>Home Type</th>
+            <th>State</th>
+            <th>Room</th>
+            <th>Price ($)</th>
+            <th>Living Space (m²)</th>
+        </tr>
+        <tbody>
 
-            </tbody>
-        </table>
-    </body>
+        </tbody>
+    </table>
+</body>
+
 </html>
