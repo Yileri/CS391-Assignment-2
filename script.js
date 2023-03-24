@@ -134,8 +134,8 @@ function filter() {
     alert("Minimum price cannot be higher than maximum price");
     return;
   } else {
-    function minMaxFilter(price) {
-      return price >= minPrice && price <= maxPrice;
+    function minMaxFilter(property) {
+      return property.price >= minPrice && property.price <= maxPrice;
     }
 
     let filtered = properties.filter(minMaxFilter);
