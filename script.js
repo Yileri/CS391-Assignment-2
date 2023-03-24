@@ -68,15 +68,35 @@ function generateTable() {
   //document.body.insertBefore(table, tableDiv);
 }
 
-function updateTable() {
+function updateTable(array) {
   const table = document.getElementById("propertyTable");
 
-  for (let i = 1; i < 6; i++) {
-    table.rows[i].cells[0].innerHTML = properties[i-1].homeType;
-    table.rows[i].cells[1].innerHTML = properties[i-1].state;
-    table.rows[i].cells[2].innerHTML = properties[i-1].room;
-    table.rows[i].cells[3].innerHTML = properties[i-1].price;
-    table.rows[i].cells[4].innerHTML = properties[i-1].livingSpace;
+  for (let i = table.rows.length-1; i > 0; i--) {
+    document.getElementsByTagName("tr")[i].remove();
+  }
+
+  for(let i = 0; i < array.length; i++) {
+    let row = table.insertRow();
+    
+    let homeTypeCell = row.insertCell(0);
+    let homeText = document.createTextNode(array[i].homeType);
+    homeTypeCell.appendChild(homeText);
+    
+    let stateCell = row.insertCell(1);
+    let stateText = document.createTextNode(array[i].state);
+    stateCell.appendChild(stateText);
+    
+    let roomCell = row.insertCell(2);
+    let roomText = document.createTextNode(array[i].room);
+    roomCell.appendChild(roomText);
+    
+    let priceCell = row.insertCell(3);
+    let priceText = document.createTextNode(array[i].price);
+    priceCell.appendChild(priceText);
+    
+    let livingSpaceCell = row.insertCell(4);
+    let spaceText = document.createTextNode(array[i].livingSpace);
+    livingSpaceCell.appendChild(spaceText);
   }
 }
 
@@ -103,7 +123,24 @@ function sort() {
       }
     });
   }
-  updateTable();
+  updateTable(properties);
+}
+
+function filter() {
+  let minPrice = document.getElementById("min").value;
+  let maxPrice = document.getElementById("max").value;
+
+  if (minPrice > maxPrice) {
+    alert("Minimum price cannot be higher than maximum price");
+    return;
+  } else {
+    function minMaxFilter(price) {
+      return price >= minPrice && price <= maxPrice;
+    }
+
+    let filtered = properties.filter(minMaxFilter);
+    updateTable(filtered);
+  }
 }
 
 window.onload = generateTable;

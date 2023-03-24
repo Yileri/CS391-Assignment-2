@@ -15,10 +15,10 @@
         <br>
         <br>
         <label for="min">Filter By </label>
-        <input type="number" name ="min" id="min" placeholder="Min price">
+        <input type="number" name ="min" id="min" placeholder="Min price" min="0">
         <label for="max">-</label>
         <input type="number" name ="max" id="max" placeholder="Max price">
-        <button type="button" name="filter" id="filter" value="filter">Filter</button>
+        <button type="button" name="filter" id="filter" value="filter" onclick="filter()">Filter</button>
         <br>
         <br>
         <table id="propertyTable">
