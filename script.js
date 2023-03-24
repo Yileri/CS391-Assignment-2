@@ -7,6 +7,7 @@ let properties = [
 ];
 
 function generateTable() {
+  /*
   const table = document.createElement("table");
 
   const thead = table.createTHead();
@@ -36,6 +37,9 @@ function generateTable() {
   const text5 = document.createTextNode("Living Space (m^2)");
   th5.appendChild(text5);
   row.appendChild(th5);
+  */
+
+  const table = document.getElementById("propertyTable");
   
   for(let i = 0; i < properties.length; i++) {
     let row = table.insertRow();
@@ -60,13 +64,20 @@ function generateTable() {
     let spaceText = document.createTextNode(properties[i].livingSpace);
     livingSpaceCell.appendChild(spaceText);
   }
-  const tableDiv = document.getElementById("table1");
-  document.body.insertBefore(table, tableDiv);
+  //const tableDiv = document.getElementById("table1");
+  //document.body.insertBefore(table, tableDiv);
 }
 
 function updateTable() {
-  document.getElementById("table");
-  generateTable();
+  const table = document.getElementById("propertyTable");
+
+  for (let i = 1; i < 6; i++) {
+    table.rows[i].cells[0].innerHTML = properties[i-1].homeType;
+    table.rows[i].cells[1].innerHTML = properties[i-1].state;
+    table.rows[i].cells[2].innerHTML = properties[i-1].room;
+    table.rows[i].cells[3].innerHTML = properties[i-1].price;
+    table.rows[i].cells[4].innerHTML = properties[i-1].livingSpace;
+  }
 }
 
 function sort() {
@@ -81,7 +92,19 @@ function sort() {
         return 0;
       }
     });
+  } else if (selected.value == "Price") {
+    properties.sort((a, b) => {
+      if (a.price < b.price) {
+        return -1;
+      } else if (a.price > b.price) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
   }
   updateTable();
 }
+
+window.onload = generateTable;
 
